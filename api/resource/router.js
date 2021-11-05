@@ -10,7 +10,11 @@ router.get("/", (req, res, next) => {
     .catch(next);
 });
 router.post("/", (req, res, next) => {
-  res.json("connected?2");
+  Resources.create(req.body)
+    .then((newResource) => {
+      res.json(newResource);
+    })
+    .catch(next);
 });
 
 module.exports = router;
